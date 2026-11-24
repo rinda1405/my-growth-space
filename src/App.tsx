@@ -7,7 +7,12 @@ import { QuickCaptureModal } from './components/common/QuickCaptureModal';
 import { SettingsModal } from './components/settings/SettingsModal';
 
 // Views
-import { DashboardView } from './components/dashboard/DashboardView';
+import { PortfolioDashboardView } from './components/dashboard/PortfolioDashboardView';
+import { ResearchTrackerView } from './components/research/ResearchTrackerView';
+import { CommunityTrackerView } from './components/community/CommunityTrackerView';
+import { KtiTrackerView } from './components/kti/KtiTrackerView';
+import { OutreachLogView } from './components/outreach/OutreachLogView';
+import { PortfolioEvidenceView } from './components/portfolio/PortfolioEvidenceView';
 import { ScheduleView } from './components/schedule/ScheduleView';
 import { ContentStudioView } from './components/content/ContentStudioView';
 import { ResearchAcademyView } from './components/research/ResearchAcademyView';
@@ -17,7 +22,7 @@ import { ProgressReflectionView } from './components/reflection/ProgressReflecti
 
 export const App: React.FC = () => {
   const [data, setData] = useState<AppData>(() => StorageService.load());
-  const [currentTab, setCurrentTab] = useState<NavItem>('dashboard');
+  const [currentTab, setCurrentTab] = useState<NavItem>('portfolio-dashboard');
   const [isOpenMobile, setIsOpenMobile] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showQuickCapture, setShowQuickCapture] = useState(false);
@@ -75,12 +80,51 @@ export const App: React.FC = () => {
         />
 
         <main className="flex-1 p-6 md:p-8 lg:p-10 overflow-y-auto">
-          {currentTab === 'dashboard' && (
-            <DashboardView
+          {(currentTab === 'portfolio-dashboard' || (currentTab as any) === 'dashboard') && (
+            <PortfolioDashboardView
               data={data}
               onUpdateData={handleUpdateData}
               onNavigate={tab => setCurrentTab(tab)}
               onOpenQuickCapture={() => setShowQuickCapture(true)}
+            />
+          )}
+
+          {currentTab === 'research-tracker' && (
+            <ResearchTrackerView
+              data={data}
+              onUpdateData={handleUpdateData}
+              onNavigateToEvidence={() => setCurrentTab('portfolio-evidence')}
+            />
+          )}
+
+          {currentTab === 'community-tracker' && (
+            <CommunityTrackerView
+              data={data}
+              onUpdateData={handleUpdateData}
+              onNavigateToEvidence={() => setCurrentTab('portfolio-evidence')}
+            />
+          )}
+
+          {currentTab === 'kti-tracker' && (
+            <KtiTrackerView
+              data={data}
+              onUpdateData={handleUpdateData}
+              onNavigateToEvidence={() => setCurrentTab('portfolio-evidence')}
+            />
+          )}
+
+          {currentTab === 'outreach-log' && (
+            <OutreachLogView
+              data={data}
+              onUpdateData={handleUpdateData}
+            />
+          )}
+
+          {currentTab === 'portfolio-evidence' && (
+            <PortfolioEvidenceView
+              data={data}
+              onUpdateData={handleUpdateData}
+              onNavigateToTab={tab => setCurrentTab(tab)}
             />
           )}
 

@@ -104,11 +104,14 @@ export const QuickCaptureModal: React.FC<QuickCaptureModalProps> = ({
             onChange={e => setTargetModule(e.target.value)}
             className="w-full rounded-lg border border-navy/20 p-2 text-xs text-navy focus:border-cyan-500 focus:outline-none bg-white"
           >
+            <option value="Research Tracker">Research Tracker (Pilar 2)</option>
+            <option value="KTI Project Tracker">KTI Project Tracker (Pilar 1)</option>
+            <option value="Community Tracker">Community Tracker (Pilar 3)</option>
+            <option value="Outreach Log">Outreach Log (Networking)</option>
+            <option value="Portfolio Evidence">Portfolio Evidence</option>
             <option value="Mikro Thinking ID">Mikro Thinking ID</option>
             <option value="GO.COUNSEL">GO.COUNSEL</option>
             <option value="Neuroeducation Roadmap">Neuroeducation Roadmap</option>
-            <option value="Research Assistant Skills">Research Assistant Skills</option>
-            <option value="Professional Growth">Professional Growth</option>
             <option value="Academic Portfolio">Academic Portfolio</option>
             <option value="Jadwal / Refleksi">Jadwal / Refleksi Pribadi</option>
           </select>

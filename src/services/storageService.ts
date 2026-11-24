@@ -1,5 +1,15 @@
 import { AppData } from '../types';
-import { initialAppData, initialDailySchedule, initialTuesdaySchedule, initialWeeklyFocus } from '../data/initialData';
+import { 
+  initialAppData, 
+  initialDailySchedule, 
+  initialTuesdaySchedule, 
+  initialWeeklyFocus,
+  initialResearchProjects,
+  initialCommunityActivities,
+  initialKtiProjects,
+  initialOutreachLogs,
+  initialPortfolioEvidences
+} from '../data/initialData';
 
 const STORAGE_KEY = 'my_growth_space_data_2027_v1';
 
@@ -36,6 +46,10 @@ export class StorageService {
         this.save(initialAppData);
         return initialAppData;
       }
+
+      let hasChanges = false;
+      const updatedData: AppData = { ...parsed };
+
       // Check if schedule needs to be updated to Personal_Operating_System_2027.xlsx
       const needsScheduleUpdate = 
         !parsed.tuesdaySchedule ||
@@ -45,19 +59,41 @@ export class StorageService {
 
       if (needsScheduleUpdate) {
         console.info('Memperbarui jadwal sesuai Personal_Operating_System_2027.xlsx...');
-        const updatedWithNewSchedule: AppData = {
-          ...parsed,
-          dailySchedule: initialDailySchedule,
-          tuesdaySchedule: initialTuesdaySchedule,
-          weeklyFocus: initialWeeklyFocus,
-          version: '1.1.0',
-          lastModified: new Date().toISOString(),
-        };
-        this.save(updatedWithNewSchedule);
-        return updatedWithNewSchedule;
+        updatedData.dailySchedule = initialDailySchedule;
+        updatedData.tuesdaySchedule = initialTuesdaySchedule;
+        updatedData.weeklyFocus = initialWeeklyFocus;
+        hasChanges = true;
       }
 
-      return parsed as AppData;
+      // Check if 2027 Tracking modules need initialization
+      if (!Array.isArray(updatedData.researchProjects)) {
+        updatedData.researchProjects = initialResearchProjects;
+        hasChanges = true;
+      }
+      if (!Array.isArray(updatedData.communityActivities)) {
+        updatedData.communityActivities = initialCommunityActivities;
+        hasChanges = true;
+      }
+      if (!Array.isArray(updatedData.ktiProjects)) {
+        updatedData.ktiProjects = initialKtiProjects;
+        hasChanges = true;
+      }
+      if (!Array.isArray(updatedData.outreachLogs)) {
+        updatedData.outreachLogs = initialOutreachLogs;
+        hasChanges = true;
+      }
+      if (!Array.isArray(updatedData.portfolioEvidences)) {
+        updatedData.portfolioEvidences = initialPortfolioEvidences;
+        hasChanges = true;
+      }
+
+      if (hasChanges || updatedData.version !== '2.0.0') {
+        updatedData.version = '2.0.0';
+        updatedData.lastModified = new Date().toISOString();
+        this.save(updatedData);
+      }
+
+      return updatedData;
     } catch (err) {
       console.error('Failed to load from localStorage:', err);
       return initialAppData;
@@ -118,6 +154,14 @@ export class StorageService {
           return { valid: false, error: `Struktur data tidak lengkap: kolom "${key}" tidak ditemukan.` };
         }
       }
+
+      // Ensure new arrays are present on import
+      if (!Array.isArray(parsed.researchProjects)) parsed.researchProjects = initialResearchProjects;
+      if (!Array.isArray(parsed.communityActivities)) parsed.communityActivities = initialCommunityActivities;
+      if (!Array.isArray(parsed.ktiProjects)) parsed.ktiProjects = initialKtiProjects;
+      if (!Array.isArray(parsed.outreachLogs)) parsed.outreachLogs = initialOutreachLogs;
+      if (!Array.isArray(parsed.portfolioEvidences)) parsed.portfolioEvidences = initialPortfolioEvidences;
+
       return { valid: true, data: parsed as AppData };
     } catch (err) {
       return { valid: false, error: 'File JSON rusak atau tidak terbaca.' };

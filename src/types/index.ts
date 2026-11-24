@@ -260,6 +260,136 @@ export interface AppSettings {
   todayFocus: string;
 }
 
+// ==========================================
+// 2027 OPPORTUNITY & PORTFOLIO TRACKING SYSTEM
+// ==========================================
+
+export type ResearchStage =
+  | 'Minat Penelitian'
+  | 'Eksplorasi Literatur'
+  | 'Pertanyaan Penelitian'
+  | 'Proposal'
+  | 'Etik / Izin'
+  | 'Pengumpulan Data'
+  | 'Analisis'
+  | 'Penulisan'
+  | 'Luaran'
+  | 'Dipublikasikan / Dipresentasikan'
+  | 'Ditunda';
+
+export interface ResearchProject {
+  id: string;
+  field: string;
+  topicOrQuestion: string;
+  institutionOrLab: string;
+  opportunityType: string;
+  sourceUrl: string;
+  priority: 'Tinggi' | 'Sedang' | 'Rendah';
+  dateAdded: string;
+  stage: ResearchStage;
+  nextAction: string;
+  actionDate: string;
+  progressStatus: 'Belum Mulai' | 'Dalam Proses' | 'Selesai' | 'Ditunda';
+  outcomesEvidence: string;
+  notes: string;
+}
+
+export type CommunityProgressStatus = 'Eksplorasi' | 'Didaftar' | 'Aktif' | 'Selesai' | 'Ditunda';
+
+export interface CommunityItem {
+  id: string;
+  organization: string;
+  focusArea: string;
+  activity: string;
+  locationType: 'Daring (Online)' | 'Luring (Offline)' | 'Hybrid';
+  sourceUrl: string;
+  opportunityType: string;
+  dateAdded: string;
+  deadline: string;
+  nextAction: string;
+  actionDate: string;
+  progressStatus: CommunityProgressStatus;
+  roleContribution: string;
+  evidence: string;
+  notes: string;
+}
+
+export type KtiType =
+  | 'Panduan'
+  | 'Lembar Kerja'
+  | 'Lokakarya'
+  | 'Pendampingan'
+  | 'Modul'
+  | 'Kursus'
+  | 'Proyek Literasi Riset'
+  | 'Lainnya';
+
+export type KtiStage = 'Ide / Konsep' | 'Pengembangan' | 'Uji Coba / Review' | 'Finalisasi' | 'Selesai';
+
+export interface KtiProject {
+  id: string;
+  title: string;
+  type: KtiType;
+  targetAudience: string;
+  problemNeed: string;
+  learningObjective: string;
+  references: string;
+  stage: KtiStage;
+  startDate: string;
+  targetDate: string;
+  reviewTrial: string;
+  feedbackEvaluation: string;
+  outputLink: string;
+  portfolioEvidence: string;
+  notes: string;
+}
+
+export type OutreachStatus =
+  | 'Draft'
+  | 'Terkirim'
+  | 'Menunggu Balasan'
+  | 'Diterima'
+  | 'Ditolak'
+  | 'Follow-up';
+
+export interface OutreachEntry {
+  id: string;
+  date: string;
+  contactPerson: string;
+  institution: string;
+  purpose: string;
+  linkedPipeline: 'Research' | 'Community' | 'KTI' | 'General';
+  contactInfo: string;
+  link: string;
+  status: OutreachStatus;
+  followUpDate: string;
+  followUpAction: string;
+  response: string;
+  notes: string;
+}
+
+export type EvidenceCategory =
+  | 'Research'
+  | 'KTI'
+  | 'Community'
+  | 'Leadership'
+  | 'Collaboration'
+  | 'Academic Development';
+
+export interface PortfolioEvidenceItem {
+  id: string;
+  title: string;
+  category: EvidenceCategory;
+  description: string;
+  date: string;
+  linkedProject: string;
+  linkedModule?: 'Research' | 'Community' | 'KTI' | 'Outreach' | 'General';
+  evidenceType: 'Dokumen / Laporan' | 'Sertifikat' | 'Link Publikasi / Produk' | 'Foto / Media' | 'Rekomendasi' | 'Lainnya';
+  fileOrUrl: string;
+  institution: string;
+  notes: string;
+}
+
 export interface AppData {
   version: string;
   lastModified: string;
@@ -280,4 +410,10 @@ export interface AppData {
   monthlyReviews: MonthlyReview[];
   energyLogs: Record<string, EnergyLog>; // keyed by YYYY-MM-DD
   settings: AppSettings;
+  // 2027 New Pillars & Tracking System
+  researchProjects: ResearchProject[];
+  communityActivities: CommunityItem[];
+  ktiProjects: KtiProject[];
+  outreachLogs: OutreachEntry[];
+  portfolioEvidences: PortfolioEvidenceItem[];
 }

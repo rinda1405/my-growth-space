@@ -1902,8 +1902,192 @@ export const initialConnections: ProfessionalConnection[] = [
   }
 ];
 
+export const initialResearchProjects = [
+  {
+    id: 'res-1',
+    field: 'Neuroeducation & Adolescent Cognitive Development',
+    topicOrQuestion: 'Pengaruh Teknik Retrieval Practice Terhadap Retensi Memori Siswa SMA pada Pembelajaran Mandiri',
+    institutionOrLab: 'Cognitive Science Lab / Universitas Mitra',
+    opportunityType: 'Independent Research & Conference Paper',
+    sourceUrl: 'https://scholar.google.com',
+    priority: 'Tinggi' as const,
+    dateAdded: '2026-11-10',
+    stage: 'Penulisan' as const,
+    nextAction: 'Selesaikan draft bagian Metodologi dan Pembahasan Awal',
+    actionDate: '2026-11-28',
+    progressStatus: 'Dalam Proses' as const,
+    outcomesEvidence: 'Draft artikel 2.500 kata & dataset uji coba',
+    notes: 'Diproyeksikan untuk konferensi nasional edukasi psikologi 2027.'
+  },
+  {
+    id: 'res-2',
+    field: 'Guidance & Counseling Psychology',
+    topicOrQuestion: 'Efektivitas Pendekatan Solution-Focused Brief Therapy (SFBT) dalam Mereduksi Prokrastinasi Akademik Remaja',
+    institutionOrLab: 'Asosiasi Bimbingan & Konseling Indonesia (ABKIN)',
+    opportunityType: 'Call for Papers Jurnal Nasional',
+    sourceUrl: 'https://jurnal.bk.org',
+    priority: 'Sedang' as const,
+    dateAdded: '2026-11-15',
+    stage: 'Eksplorasi Literatur' as const,
+    nextAction: 'Sintesis 10 artikel primer terkait intervensi SFBT',
+    actionDate: '2026-12-02',
+    progressStatus: 'Dalam Proses' as const,
+    outcomesEvidence: 'Matrix literatur 12 jurnal terindeks SINTA/Scopus',
+    notes: 'Kombinasikan dengan modul intervensi konseling sekolah.'
+  }
+];
+
+export const initialCommunityActivities = [
+  {
+    id: 'comm-1',
+    organization: 'Komunitas Edukasi Remaja & Guru Peduli',
+    focusArea: 'Literasi Mental Health & Regulasi Emosi Siswa',
+    activity: 'Fasilitator Workshop Regulasi Stres & Manajemen Waktu Belajar Remaja',
+    locationType: 'Hybrid' as const,
+    sourceUrl: 'https://instagram.com/edukasiremaja',
+    opportunityType: 'Volunteer Fasilitator',
+    dateAdded: '2026-11-05',
+    deadline: '2026-12-15',
+    nextAction: 'Kirim modul workshop dan lembar refleksi peserta',
+    actionDate: '2026-11-30',
+    progressStatus: 'Aktif' as const,
+    roleContribution: 'Lead Speaker & Perancang Modul Aktivitas Siswa',
+    evidence: 'Sertifikat Narasumber & Dokumentasi Sesi 50+ Peserta',
+    notes: 'Mendapat feedback positif, diundang untuk rangkaian seri berikutnya.'
+  },
+  {
+    id: 'comm-2',
+    organization: 'Youth Research Society Indonesia',
+    focusArea: 'Pengenalan Metodologi Riset Sederhana bagi Pelajar',
+    activity: 'Mentor Pembimbing Karya Tulis Ilmiah Remaja Tingkat Provinsi',
+    locationType: 'Daring (Online)' as const,
+    sourceUrl: 'https://youthresearch.id',
+    opportunityType: 'Mentorship / Juri KTI',
+    dateAdded: '2026-11-18',
+    deadline: '2026-12-20',
+    nextAction: 'Tinjau proposal penelitian 3 tim bimbingan',
+    actionDate: '2026-12-05',
+    progressStatus: 'Didaftar' as const,
+    roleContribution: 'Mentor Teknis Metodologi & Sistematika KTI',
+    evidence: 'Surat Keputusan Mentor & Log Bimbingan Siswa',
+    notes: 'Fokus mendampingi siswa SMA dalam menyusun rumusan masalah empiris.'
+  }
+];
+
+export const initialKtiProjects = [
+  {
+    id: 'kti-1',
+    title: 'Panduan Praktis Menulis Esai Ilmiah Populer untuk Pendidik dan Konselor',
+    type: 'Panduan' as const,
+    targetAudience: 'Guru BK, Praktisi Edukasi, dan Mahasiswa Tingkat Akhir',
+    problemNeed: 'Banyak pendidik memiliki wawasan lapangan mendalam namun kesulitan menuangkannya dalam format penulisan ilmiah yang terstruktur.',
+    learningObjective: 'Mampu menyusun kerangka esai ilmiah dari data empiris keseharian di sekolah dalam 5 langkah praktis.',
+    references: 'Pedoman Penulisan Ilmiah Populer & Kaidah Metodologi Kualitatif Sederhana',
+    stage: 'Finalisasi' as const,
+    startDate: '2026-10-15',
+    targetDate: '2026-12-10',
+    reviewTrial: 'Telah diuji coba pada 5 rekan sejawat guru konseling.',
+    feedbackEvaluation: 'Bahasa sangat mudah dipahami, perlu ditambah template contoh paragraf sintesis.',
+    outputLink: 'https://drive.google.com/kti/panduan-esai-ilmiah',
+    portfolioEvidence: 'E-Booklet PDF 28 Halaman & Lembar Checklist Penulisan',
+    notes: 'Akan dirilis bebas sebagai sumber belajar literasi riset.'
+  },
+  {
+    id: 'kti-2',
+    title: 'Lembar Kerja Refleksi Diri & Pemetaan Beban Kognitif Siswa',
+    type: 'Lembar Kerja' as const,
+    targetAudience: 'Siswa SMA dan Konselor Sekolah',
+    problemNeed: 'Siswa sering mengalami kelelahan mental tanpa memahami penyebab overload informasi saat belajar.',
+    learningObjective: 'Membantu siswa mengidentifikasi hambatan belajar dan merancang jadwal belajar yang ramah otak (brain-friendly).',
+    references: 'Cognitive Load Theory (Sweller) & Prinsip Neuroedukasi',
+    stage: 'Uji Coba / Review' as const,
+    startDate: '2026-11-01',
+    targetDate: '2026-12-25',
+    reviewTrial: 'Diujicobakan pada 30 siswa kelas XI bimbingan mandiri.',
+    feedbackEvaluation: 'Format visual interaktif sangat disukai, instruksi singkat jelas.',
+    outputLink: 'https://drive.google.com/kti/lembar-kerja-beban-kognitif',
+    portfolioEvidence: 'Worksheet Printable 4 Halaman + Panduan Konselor',
+    notes: 'Terhubung dengan materi video Mikro Thinking ID Episode 02.'
+  }
+];
+
+export const initialOutreachLogs = [
+  {
+    id: 'out-1',
+    date: '2026-11-12',
+    contactPerson: 'Dr. Hendra Gunawan',
+    institution: 'Pusat Riset Psikologi Kognitif & Pendidikan',
+    purpose: 'Konsultasi instrumen ukur beban kognitif dan peluang kolaborasi penulisan review paper',
+    linkedPipeline: 'Research' as const,
+    contactInfo: 'hendra.gunawan@lab-psikologi.ac.id',
+    link: 'https://lab-psikologi.ac.id/team/hendra',
+    status: 'Menunggu Balasan' as const,
+    followUpDate: '2026-11-26',
+    followUpAction: 'Kirim surel tindak lanjut sopan melampirkan one-page research concept note',
+    response: 'Email pertama terkirim dengan abstrak mini proposal.',
+    notes: 'Prioritas tinggi untuk jejaring akademik 2027.'
+  },
+  {
+    id: 'out-2',
+    date: '2026-11-20',
+    contactPerson: 'Nadia Salsabila, M.Psi.',
+    institution: 'Inisiatif Kesehatan Mental Remaja',
+    purpose: 'Ajakan kolaborasi modul bimbingan kelompok daring untuk siswa SMA',
+    linkedPipeline: 'Community' as const,
+    contactInfo: 'nadia@mentalhealthremaja.id',
+    link: 'https://mentalhealthremaja.id',
+    status: 'Diterima' as const,
+    followUpDate: '2026-12-01',
+    followUpAction: 'Diskusi sinkron via Zoom untuk pembagian peran dan timeline pelaksanaan',
+    response: 'Menyambut baik dan meminta draft silabus modul dalam 2 minggu.',
+    notes: 'Peluang strategis untuk kontribusi komunitas di Q1 2027.'
+  }
+];
+
+export const initialPortfolioEvidences = [
+  {
+    id: 'ev-1',
+    title: 'Naskah Draft Artikel Ilmiah: Retrieval Practice & Retensi Memori',
+    category: 'Research' as const,
+    description: 'Manuskrip lengkap 12 halaman yang membedah hasil eksperimen kuasi di lingkungan sekolah dengan metodologi empiris.',
+    date: '2026-11-18',
+    linkedProject: 'res-1',
+    linkedModule: 'Research' as const,
+    evidenceType: 'Dokumen / Laporan' as const,
+    fileOrUrl: 'https://drive.google.com/evidence/manuskrip-retrieval-practice.pdf',
+    institution: 'My Growth Space Academic Hub',
+    notes: 'Artefak utama portofolio pendaftaran Remote Research Assistant 2027.'
+  },
+  {
+    id: 'ev-2',
+    title: 'E-Booklet & Modul: Panduan Praktis Menulis Esai Ilmiah Populer',
+    category: 'KTI' as const,
+    description: 'Buku panduan format PDF 28 halaman ber-ISBN/hak cipta terbuka yang telah diuji keterbacaannya kepada guru dan konselor.',
+    date: '2026-11-22',
+    linkedProject: 'kti-1',
+    linkedModule: 'KTI' as const,
+    evidenceType: 'Link Publikasi / Produk' as const,
+    fileOrUrl: 'https://drive.google.com/evidence/ebooklet-panduan-esai.pdf',
+    institution: 'Komunitas Edukasi Guru BK',
+    notes: 'Bukti kompetensi pengembangan materi penulisan ilmiah terstruktur.'
+  },
+  {
+    id: 'ev-3',
+    title: 'Sertifikat Pembicara & Dokumentasi Workshop Literasi Remaja',
+    category: 'Community' as const,
+    description: 'Dokumentasi pelaksanaan pelatihan daring 2 jam bersama 50+ pelajar dengan testimoni kebermanfaatan modul.',
+    date: '2026-11-15',
+    linkedProject: 'comm-1',
+    linkedModule: 'Community' as const,
+    evidenceType: 'Sertifikat' as const,
+    fileOrUrl: 'https://drive.google.com/evidence/sertifikat-workshop-mental-health.pdf',
+    institution: 'Komunitas Edukasi Remaja & Guru Peduli',
+    notes: 'Bukti kontribusi aktif dalam pemberdayaan komunitas remaja.'
+  }
+];
+
 export const initialAppData: AppData = {
-  version: '1.0.0',
+  version: '2.0.0',
   lastModified: new Date().toISOString(),
   dailySchedule: initialDailySchedule,
   tuesdaySchedule: initialTuesdaySchedule,
@@ -1934,5 +2118,11 @@ export const initialAppData: AppData = {
     conflictHandling: 'proposed',
     customConflictTime: '18.30–19.30',
     todayFocus: 'Membaca 1 bab literatur Neuroeducation & menyusun outline video Mikro Thinking.'
-  }
+  },
+  // 2027 New Pillars & Tracking System
+  researchProjects: initialResearchProjects,
+  communityActivities: initialCommunityActivities,
+  ktiProjects: initialKtiProjects,
+  outreachLogs: initialOutreachLogs,
+  portfolioEvidences: initialPortfolioEvidences
 };
